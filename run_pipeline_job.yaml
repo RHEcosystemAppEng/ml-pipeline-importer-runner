@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kfp-run-job
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      serviceAccountName: pipeline-runner-dspa    
+      containers:
+      - name: kfp-runner
+        image: quay.io/ikatav/ml-pipeline-importer:0.0.1
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: PIPELINE_YAML_RAW_URL
+            value: 'https://raw.githubusercontent.com/itay1551/Redis-embeddingjob/refs/heads/main/pipeline.yaml'
+          - name: PIPELINE_NAME
+            value: 'populate-vectors'
+          - name: EXPERIMENT_NAME
+            value: 'Default'
+          - name: RUN_NAME
+            value: '1'
+          - name: PIPELINE_PARAMS
+            value: '{"load_from_repo": true, "load_from_s3": false, "load_from_urls": false}'
+        command: ['/bin/sh']
+        args: ['-c', './entrypoint.sh']
+      restartPolicy: Never
