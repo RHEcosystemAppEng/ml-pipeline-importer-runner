@@ -1,9 +1,9 @@
-This job use/ creates a Openshift AI data science pipeline and, experiment, and run's it.
+Creates or uses an existing OpenShift AI data science pipeline, and run's it.
 
 
-example for pipeline creation can be seen in this repo: **TODO**
+example for pipeline creation can be seen in this repo: [populate-vectors-pipeline](https://github.com/RHEcosystemAppEng/populate-vectors-pipeline)
 
-## Mandatory Variables
+## Mandatory Env Variables
 
 #### `PIPELINE_YAML_RAW_URL`
 
@@ -11,7 +11,7 @@ Defines the **RAW** URL of the compiled KFP pipeline program.
 
 
 
-## Optional Variables (with Defaults)
+## Optional Env Variables (with Defaults)
 
 #### `PIPELINE_NAME`
 
