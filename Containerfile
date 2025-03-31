@@ -4,7 +4,6 @@ USER root
 WORKDIR /app/
 
 COPY requirements.txt /app/
-RUN dnf install git -y
 RUN pip3 install -r requirements.txt
 
 COPY entrypoint.sh /app/
